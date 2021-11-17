@@ -3,10 +3,50 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
-using Rn.NetCore.Common.Wrappers;
 
 namespace Rn.NetCore.Encryption.Wrappers
 {
+  public interface IStream : IDisposable, IAsyncDisposable
+  {
+    bool CanRead { get; }
+    bool CanSeek { get; }
+    bool CanTimeout { get; }
+    bool CanWrite { get; }
+    long Length { get; }
+    long Position { get; set; }
+    int ReadTimeout { get; set; }
+    int WriteTimeout { get; set; }
+
+    Task CopyToAsync(Stream destination);
+    Task CopyToAsync(Stream destination, int bufferSize);
+    Task CopyToAsync(Stream destination, CancellationToken cancellationToken);
+    Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken);
+    void CopyTo(Stream destination);
+    void CopyTo(Stream destination, int bufferSize);
+    void Close();
+    void Flush();
+    Task FlushAsync();
+    Task FlushAsync(CancellationToken cancellationToken);
+    IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback? callback, object? state);
+    int EndRead(IAsyncResult asyncResult);
+    Task<int> ReadAsync(byte[] buffer, int offset, int count);
+    Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+    ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default);
+    IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback? callback, object? state);
+    void EndWrite(IAsyncResult asyncResult);
+    Task WriteAsync(byte[] buffer, int offset, int count);
+    Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+    ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default);
+    long Seek(long offset, SeekOrigin origin);
+    void SetLength(long value);
+    int Read(byte[] buffer, int offset, int count);
+    int Read(Span<byte> buffer);
+    int ReadByte();
+    void Write(byte[] buffer, int offset, int count);
+    void Write(ReadOnlySpan<byte> buffer);
+    void WriteByte(byte value);
+  }
+
   public interface ICryptoStream : IStream
   {
     bool HasFlushedFinalBlock { get; }
