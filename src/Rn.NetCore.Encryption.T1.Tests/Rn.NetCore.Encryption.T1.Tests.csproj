@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj" />
+  </ItemGroup>
+
 </Project>
