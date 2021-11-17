@@ -5,7 +5,8 @@ using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
-using Rn.NetCore.Common.Wrappers;
+using Rn.NetCore.Encryption.T1.Tests.TestSupport;
+using Rn.NetCore.Encryption.Wrappers;
 
 namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
 {
@@ -58,7 +59,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Encrypt_GivenString_ShouldRunEncryptionLogic()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var cryptoTransform = Substitute.For<ICryptoTransform>();
       var cryptoStream = Substitute.For<ICryptoStream>();
 
@@ -106,8 +107,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Encrypt_GivenFails_ShouldLog()
     {
       // arrange
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var ex = new Exception("Whoops");
 
       var config = new EncryptionServiceConfigBuilder()
@@ -142,8 +143,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Encrypt_GivenFailsLoggingDisabled_ShouldNotLog()
     {
       // arrange
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var ex = new Exception("Whoops");
 
       var config = new EncryptionServiceConfigBuilder()
@@ -178,7 +179,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Encrypt_GivenFails_ShouldReturnNull()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var ex = new Exception("Whoops");
 
       var config = new EncryptionServiceConfigBuilder()

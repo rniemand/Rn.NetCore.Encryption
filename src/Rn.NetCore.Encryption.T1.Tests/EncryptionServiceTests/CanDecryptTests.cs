@@ -18,7 +18,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void CanDecrypt_GivenEncryptionServiceDisabled_ShouldReturnFalse()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
       encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);
@@ -48,7 +48,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void CanDecrypt_GivenInvalidInput_ShouldReturnFalse(string input)
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
       encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);
@@ -76,7 +76,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void CanDecrypt_GivenValidInput_ShouldCallDecrypt()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
       encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);
@@ -104,7 +104,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void CanDecrypt_GivenDecryptFails_ShouldReturnFalse()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
       encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);
@@ -133,7 +133,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void CanDecrypt_GivenDecryptPasses_ShouldReturnTrue()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
       encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);

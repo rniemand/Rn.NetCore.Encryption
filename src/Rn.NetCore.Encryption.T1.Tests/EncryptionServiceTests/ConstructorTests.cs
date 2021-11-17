@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
+using Rn.NetCore.Encryption.T1.Tests.TestSupport;
 
 namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
 {
@@ -29,7 +30,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void EncryptionService_GivenEnabled_ShouldSetKeyBytes()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       var config = new EncryptionServiceConfigBuilder()
         .WithDefaults()
@@ -50,7 +51,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void EncryptionService_GivenEnabled_ShouldSetIVBytes()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
 
       var config = new EncryptionServiceConfigBuilder()
         .WithDefaults()
@@ -71,7 +72,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void EncryptionService_GivenInputLoggingEnabled_ShouldLogError()
     {
       // arrange
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
 
       var config = new EncryptionServiceConfigBuilder()
         .WithDefaults()

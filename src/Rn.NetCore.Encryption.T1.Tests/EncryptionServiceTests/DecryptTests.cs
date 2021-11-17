@@ -6,7 +6,8 @@ using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using Rn.NetCore.Common.Extensions;
 using Rn.NetCore.Common.Logging;
-using Rn.NetCore.Common.Wrappers;
+using Rn.NetCore.Encryption.T1.Tests.TestSupport;
+using Rn.NetCore.Encryption.Wrappers;
 
 namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
 {
@@ -58,7 +59,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Decrypt_GivenString_ShouldRunEncryptionLogic()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var cryptoTransform = Substitute.For<ICryptoTransform>();
       var cryptoStream = Substitute.For<ICryptoStream>();
 
@@ -107,8 +108,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Decrypt_GivenExceptionThrown_ShouldLog()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
       var ex = new Exception("Whoops");
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
@@ -144,8 +145,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Decrypt_GivenExceptionThrownWithInputLogging_ShouldLog()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
       var ex = new Exception("Whoops");
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
@@ -181,8 +182,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Decrypt_GivenExceptionThrownAndLoggingDisabled_ShouldNotLog()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
-      var logger = Substitute.For<ILoggerAdapter<Common.Services.EncryptionService>>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
+      var logger = Substitute.For<ILoggerAdapter<EncryptionService>>();
       var ex = new Exception("Whoops");
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
@@ -219,7 +220,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
     public void Decrypt_GivenExceptionThrown_ShouldReturnNull()
     {
       // arrange
-      var encryptionHelper = Substitute.For<Common.Helpers.IEncryptionHelper>();
+      var encryptionHelper = Substitute.For<IEncryptionHelper>();
       var ex = new Exception("Whoops");
 
       encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
