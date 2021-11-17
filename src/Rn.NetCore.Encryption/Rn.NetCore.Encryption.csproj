@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>5.0.0.100</Version>
+    <Version>5.0.0.101</Version>
     <Company>Richard Niemand</Company>
     <Description>Encryption helper lib for my projects</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
