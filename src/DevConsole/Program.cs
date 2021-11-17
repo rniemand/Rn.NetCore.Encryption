@@ -4,10 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using Rn.NetCore.Common.Configuration;
-using Rn.NetCore.Common.Helpers;
 using Rn.NetCore.Common.Logging;
-using Rn.NetCore.Common.Services;
+using Rn.NetCore.Encryption;
+using Rn.NetCore.Encryption.Providers;
 
 namespace DevConsole
 {
@@ -20,8 +19,12 @@ namespace DevConsole
     {
       ConfigureDI();
 
-      _logger.Info("Hello World");
-      Console.WriteLine("Hello World!");
+      var encryptionService = _services.GetRequiredService<IEncryptionService>();
+
+      var encrypted = encryptionService.Encrypt("Hello World");
+      var decrypted = encryptionService.Decrypt(encrypted);
+
+      Console.WriteLine("Fin.");
     }
 
     // DI related methods
@@ -36,8 +39,8 @@ namespace DevConsole
 
       services
         // Configuration
-        .AddSingleton(config)
-        .AddSingleton<ICommonConfigProvider, CommonConfigProvider>()
+        .AddSingleton<IConfiguration>(config)
+        .AddSingleton<IEncryptionConfigProvider, EncryptionConfigProvider>()
 
         // Logging
         .AddSingleton(typeof(ILoggerAdapter<>), typeof(LoggerAdapter<>))
