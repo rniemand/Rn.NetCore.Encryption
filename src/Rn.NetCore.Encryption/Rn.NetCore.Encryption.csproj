@@ -11,4 +11,9 @@
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Rn.NetCore.Common" Version="5.0.1.150" />
+  </ItemGroup>
+
 </Project>
