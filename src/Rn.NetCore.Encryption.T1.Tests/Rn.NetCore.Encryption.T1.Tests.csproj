@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EncryptionServiceTests\" />
+  </ItemGroup>
+
 </Project>
