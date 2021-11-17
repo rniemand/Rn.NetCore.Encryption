@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using Rn.NetCore.Common.Configuration;
 using Rn.NetCore.Common.Logging;
+using Rn.NetCore.Encryption.Configuration;
 using Rn.NetCore.Encryption.Providers;
 
 namespace Rn.NetCore.Encryption
