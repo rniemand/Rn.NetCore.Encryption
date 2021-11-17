@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>5.0.0.100</Version>
+    <Company>Richard Niemand</Company>
+    <Description>Encryption helper lib for my projects</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Richard Niemand</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
 </Project>
