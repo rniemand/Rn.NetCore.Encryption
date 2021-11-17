@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rn.NetCore.Encryption", "Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj", "{9A450192-C0D1-481F-A8DD-C814FC18A42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rn.NetCore.Encryption", "Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj", "{9A450192-C0D1-481F-A8DD-C814FC18A42C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{1CE15A9E-A3B6-4AF8-8CE8-0FBE49FC6213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rn.NetCore.Encryption.T1.Tests", "Rn.NetCore.Encryption.T1.Tests\Rn.NetCore.Encryption.T1.Tests.csproj", "{F1B23571-56B1-47E1-9331-EDA23CE3288E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,17 @@ Global
 		{9A450192-C0D1-481F-A8DD-C814FC18A42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A450192-C0D1-481F-A8DD-C814FC18A42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A450192-C0D1-481F-A8DD-C814FC18A42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B23571-56B1-47E1-9331-EDA23CE3288E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B23571-56B1-47E1-9331-EDA23CE3288E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B23571-56B1-47E1-9331-EDA23CE3288E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B23571-56B1-47E1-9331-EDA23CE3288E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A450192-C0D1-481F-A8DD-C814FC18A42C} = {1CE15A9E-A3B6-4AF8-8CE8-0FBE49FC6213}
+		{F1B23571-56B1-47E1-9331-EDA23CE3288E} = {1CE15A9E-A3B6-4AF8-8CE8-0FBE49FC6213}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B4C1D61-E378-495E-9E37-A5BB00D59B8F}
