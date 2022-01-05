@@ -39,7 +39,7 @@ namespace Rn.NetCore.Encryption
       // Check if we need to warn about potential bad config values
       if (_serviceConfig.LoggingEnabled && _serviceConfig.LogDecryptInput)
       {
-        _logger.Error(
+        _logger.LogError(
           "Encryption input value logging has been enabled, " +
           "this is intended only for troubleshooting purposes and should " +
           "be disabled once completed!"
@@ -119,7 +119,7 @@ namespace Rn.NetCore.Encryption
 
         if (_serviceConfig.LogDecryptInput)
         {
-          _logger.Error(ex,
+          _logger.LogError(ex,
             "Unable to decrypt: {i}. {s}",
             encryptedText,
             ex.HumanStackTrace()

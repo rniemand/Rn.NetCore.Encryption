@@ -87,7 +87,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       );
 
       // assert
-      logger.Received(1).Error(
+      logger.Received(1).LogError(
         "Encryption input value logging has been enabled, " +
         "this is intended only for troubleshooting purposes and should " +
         "be disabled once completed!"

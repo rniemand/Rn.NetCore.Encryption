@@ -130,7 +130,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       encryptionService.Encrypt(InputValue);
 
       // assert
-      logger.Received(1).Error(
+      logger.Received(1).LogError(
         "An unexpected exception of type {exType} was thrown in {method}. {exMessage}. | {exStack}",
         ex.GetType().Name,
         Arg.Any<string>(),
@@ -166,7 +166,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       encryptionService.Encrypt(InputValue);
 
       // assert
-      logger.DidNotReceive().Error(
+      logger.DidNotReceive().LogError(
         "An unexpected exception of type {exType} was thrown in {method}. {exMessage}. | {exStack}",
         ex.GetType().Name,
         Arg.Any<string>(),

@@ -133,7 +133,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       encryptionService.Decrypt(InputValue);
 
       // assert
-      logger.Received(1).Error("An unexpected exception of type {exType} was thrown in {method}. {exMessage}. | {exStack}",
+      logger.Received(1).LogError("An unexpected exception of type {exType} was thrown in {method}. {exMessage}. | {exStack}",
         ex.GetType().Name,
         Arg.Any<string>(),
         ex.Message,
@@ -171,7 +171,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       encryptionService.Decrypt(InputValue);
 
       // assert
-      logger.Received(1).Error(ex,
+      logger.Received(1).LogError(ex,
         "Unable to decrypt: {i}. {s}",
         InputValue,
         ex.HumanStackTrace()
@@ -208,7 +208,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests
       encryptionService.Decrypt(InputValue);
 
       // assert
-      logger.DidNotReceive().Error(
+      logger.DidNotReceive().LogError(
         Arg.Any<Exception>(),
         Arg.Any<string>(),
         Arg.Any<string>(),

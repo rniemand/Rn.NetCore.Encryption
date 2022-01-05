@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.0.0.100</Version>
+    <Version>6.0.0.101</Version>
     <Company>Richard Niemand</Company>
     <Description>Encryption helper lib for my projects</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Rn.NetCore.Common" Version="6.0.0.100" />
+    <PackageReference Include="Rn.NetCore.Common" Version="6.0.0.106" />
   </ItemGroup>
 
 </Project>

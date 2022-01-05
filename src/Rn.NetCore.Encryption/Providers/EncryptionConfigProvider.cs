@@ -37,7 +37,7 @@ namespace Rn.NetCore.Encryption.Providers
       // Handle configuration missing
       if (!section.Exists())
       {
-        _logger.Warning(
+        _logger.LogWarning(
           "Unable to find configuration section '{section}', " +
           "as a result the EncryptionService will be disabled.",
           configKey
