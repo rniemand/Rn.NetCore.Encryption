@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.0.0.102</Version>
+    <Version>6.0.0.103</Version>
     <Company>Richard Niemand</Company>
     <Description>Encryption helper lib for my projects</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
