@@ -5,7 +5,7 @@ on:
       - master
 
 env:
-  PROJECT_NAME: "Rn.NetCore.BasicHttp"
+  PROJECT_NAME: "Rn.NetCore.Encryption"
 
 jobs:
   build:
