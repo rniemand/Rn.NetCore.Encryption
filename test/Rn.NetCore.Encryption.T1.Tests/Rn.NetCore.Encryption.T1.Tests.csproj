@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj" />
+    <Folder Include="EncryptionServiceTests\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EncryptionServiceTests\" />
+    <ProjectReference Include="..\..\src\Rn.NetCore.Encryption\Rn.NetCore.Encryption.csproj" />
   </ItemGroup>
 
 </Project>
