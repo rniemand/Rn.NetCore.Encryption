@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Rn.NetCore.Common.Exceptions;
@@ -53,10 +53,10 @@ namespace Rn.NetCore.Encryption.Providers
 
       // Ensure that the "Key" and "IV" has been set
       if (string.IsNullOrWhiteSpace(boundConfig.Key))
-        throw new MissingConfigurationException(configKey, nameof(boundConfig.Key));
+        throw new ConfigMissingException(configKey, nameof(boundConfig.Key));
 
       if (string.IsNullOrWhiteSpace(boundConfig.IV))
-        throw new MissingConfigurationException(configKey, nameof(boundConfig.IV));
+        throw new ConfigMissingException(configKey, nameof(boundConfig.IV));
 
       return boundConfig;
     }
