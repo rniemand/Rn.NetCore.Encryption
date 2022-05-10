@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Security.Cryptography;
 using Rn.NetCore.Common.Logging;
@@ -31,7 +31,7 @@ public class EncryptionService : IEncryptionService
     // TODO: [TESTS] (EncryptionService.EncryptionService) Add tests
     _logger = logger;
     _encryptionHelper = encryptionHelper;
-    _serviceConfig = configProvider.GetEncryptionServiceConfig();
+    _serviceConfig = configProvider.Provide();
 
     _keyBytes = _encryptionHelper.FromBase64String(_serviceConfig.Key);
     _ivBytes = _encryptionHelper.FromBase64String(_serviceConfig.IV);

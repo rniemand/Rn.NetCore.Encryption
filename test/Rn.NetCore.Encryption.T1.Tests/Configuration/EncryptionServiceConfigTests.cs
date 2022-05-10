@@ -39,6 +39,6 @@ public class EncryptionServiceConfigTests
   [Test]
   public void EncryptionServiceConfig_GivenConfigKey_ShouldReturnExpectedValue()
   {
-    Assert.AreEqual("RnCore:Encryption", EncryptionServiceConfig.ConfigKey);
+    Assert.AreEqual("Rn.Encryption", EncryptionServiceConfig.ConfigKey);
   }
 }

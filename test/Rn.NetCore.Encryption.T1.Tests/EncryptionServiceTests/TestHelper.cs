@@ -1,4 +1,4 @@
-using NSubstitute;
+﻿using NSubstitute;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.Configuration;
 using Rn.NetCore.Encryption.Providers;
@@ -30,7 +30,7 @@ public static class TestHelper
 
     config ??= new EncryptionServiceConfigBuilder().BuildWithDefaults();
     configProvider = Substitute.For<IEncryptionConfigProvider>();
-    configProvider.GetEncryptionServiceConfig().Returns(config);
+    configProvider.Provide().Returns(config);
 
     return configProvider;
   }

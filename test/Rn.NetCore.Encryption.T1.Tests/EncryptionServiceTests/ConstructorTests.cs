@@ -1,4 +1,4 @@
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.T1.Tests.TestSupport;
@@ -23,7 +23,7 @@ public class ConstructorTests
     );
 
     // assert
-    configProvider.Received(1).GetEncryptionServiceConfig();
+    configProvider.Received(1).Provide();
   }
 
   [Test]

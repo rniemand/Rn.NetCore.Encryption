@@ -1,6 +1,4 @@
-using System;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Rn.NetCore.Common.Exceptions;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.Configuration;
@@ -9,7 +7,7 @@ namespace Rn.NetCore.Encryption.Providers;
 
 public interface IEncryptionConfigProvider
 {
-  EncryptionServiceConfig GetEncryptionServiceConfig();
+  EncryptionServiceConfig Provide();
 }
 
 public class EncryptionConfigProvider : IEncryptionConfigProvider
@@ -17,19 +15,17 @@ public class EncryptionConfigProvider : IEncryptionConfigProvider
   private readonly ILoggerAdapter<EncryptionConfigProvider> _logger;
   private readonly IConfiguration _configuration;
 
-  public EncryptionConfigProvider(IServiceProvider serviceProvider)
+  public EncryptionConfigProvider(
+    ILoggerAdapter<EncryptionConfigProvider> logger,
+    IConfiguration configuration)
   {
-    // TODO: [TESTS] (EncryptionConfigProvider) Add tests
-    _logger = serviceProvider.GetRequiredService<ILoggerAdapter<EncryptionConfigProvider>>();
-    _configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    _logger = logger;
+    _configuration = configuration;
   }
-
-
-  // Interface methods
-  public EncryptionServiceConfig GetEncryptionServiceConfig()
+  
+  public EncryptionServiceConfig Provide()
   {
-    // TODO: [TESTS] (EncryptionConfigProvider.GetEncryptionServiceConfig) Add tests
-    // TODO: [RENAME] (EncryptionConfigProvider.GetEncryptionServiceConfig) Rename this
+    // TODO: [TESTS] (EncryptionConfigProvider.Provide) Add tests
     const string configKey = EncryptionServiceConfig.ConfigKey;
     var boundConfig = new EncryptionServiceConfig();
     var section = _configuration.GetSection(configKey);
@@ -40,8 +36,7 @@ public class EncryptionConfigProvider : IEncryptionConfigProvider
       _logger.LogWarning(
         "Unable to find configuration section '{section}', " +
         "as a result the EncryptionService will be disabled.",
-        configKey
-      );
+        configKey);
 
       return boundConfig;
     }
