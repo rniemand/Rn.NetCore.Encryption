@@ -1,9 +1,7 @@
 # Rn.NetCore.Encryption
-Core encryption for your apps
-
-Source code for the project can be found [here](https://github.com/rniemand/Rn.NetCore.Encryption).
+Simple encryption utility for use with your applications, depends on [Rn.NetCore.Common](https://www.nuget.org/packages/Rn.NetCore.Common/).
 
 <!--(Rn.BuildScriptHelper){
 	"version": "1.0.106",
-	"replace": true
+	"replace": false
 }(END)-->
