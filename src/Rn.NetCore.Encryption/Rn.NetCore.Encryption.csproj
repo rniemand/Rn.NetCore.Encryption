@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.0.0.103</Version>
+    <Version>6.0.1.100</Version>
     <Company>Richard Niemand</Company>
     <Description>Encryption helper lib for my projects</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Rn.NetCore.Common" Version="6.0.0.107" />
+    <PackageReference Include="Rn.NetCore.Common" Version="6.0.1.100" />
   </ItemGroup>
 
 </Project>

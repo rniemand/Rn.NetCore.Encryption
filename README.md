@@ -1,9 +1,25 @@
 # Rn.NetCore.Encryption
-Core encryption for your apps
+Simple encryption utility for use with your applications, depends on [Rn.NetCore.Common](https://www.nuget.org/packages/Rn.NetCore.Common/).
 
-Source code for the project can be found [here](https://github.com/rniemand/Rn.NetCore.Encryption).
+- [Configuration](/docs/configuration/README.md) - covers required configuration
+- [EncryptionServiceConfig](/docs/configuration/EncryptionServiceConfig.md) - core configuration stored in the `appsettings.json` file.
+
+## Usage
+Using this package is as simple as adding the following configuration to your projects `appsettings.json` file:
+
+```json
+{
+  "Rn.Encryption": {
+    "enabled": true,
+    "key": "rhgeU6mR1zA=",
+    "iv": "5/5mGtt2xF...Mi4Aw="
+  }
+}
+```
+
+Injecting `IEncryptionService` where you need to use it and call the `.Encrypt()` and `.Decrypt()` methods.
 
 <!--(Rn.BuildScriptHelper){
 	"version": "1.0.106",
-	"replace": true
+	"replace": false
 }(END)-->
