@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using Rn.NetCore.Common.Logging;
@@ -42,13 +42,10 @@ public class EncryptionService : IEncryptionService
       _logger.LogError(
         "Encryption input value logging has been enabled, " +
         "this is intended only for troubleshooting purposes and should " +
-        "be disabled once completed!"
-      );
+        "be disabled once completed!");
     }
   }
 
-
-  // Public methods
   public string Encrypt(string plainText)
   {
     // TODO: [METRICS] (EncryptionService.Encrypt) Add metrics
@@ -102,8 +99,7 @@ public class EncryptionService : IEncryptionService
       var csDecrypt = _encryptionHelper.CreateCryptoStream(
         msDecrypt,
         cryptoTransform,
-        CryptoStreamMode.Read
-      );
+        CryptoStreamMode.Read);
 
       var fromEncrypt = new byte[encryptedBytes.Length];
       csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length);
@@ -122,8 +118,7 @@ public class EncryptionService : IEncryptionService
         _logger.LogError(ex,
           "Unable to decrypt: {i}. {s}",
           encryptedText,
-          ex.HumanStackTrace()
-        );
+          ex.HumanStackTrace());
       }
       else
       {
