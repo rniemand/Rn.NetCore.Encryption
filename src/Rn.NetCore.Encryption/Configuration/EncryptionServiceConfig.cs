@@ -1,33 +1,24 @@
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace Rn.NetCore.Encryption.Configuration;
 
+// DOCS: docs\configuration\EncryptionServiceConfig.md
 public class EncryptionServiceConfig
 {
-  public const string ConfigKey = "RnCore:Encryption";
+  public const string ConfigKey = "Rn.Encryption";
 
-  [JsonProperty("Enabled"), JsonPropertyName("Enabled")]
+  [ConfigurationKeyName("enabled")]
   public bool Enabled { get; set; }
 
-  [JsonProperty("Key"), JsonPropertyName("Key")]
-  public string Key { get; set; }
+  [ConfigurationKeyName("key")]
+  public string Key { get; set; } = string.Empty;
 
-  [JsonProperty("IV"), JsonPropertyName("IV")]
-  public string IV { get; set; }
+  [ConfigurationKeyName("iv")]
+  public string IV { get; set; } = string.Empty;
 
-  [JsonProperty("LoggingEnabled"), JsonPropertyName("LoggingEnabled")]
+  [ConfigurationKeyName("loggingEnabled")]
   public bool LoggingEnabled { get; set; }
 
-  [JsonProperty("LogDecryptInput"), JsonPropertyName("LogDecryptInput")]
+  [ConfigurationKeyName("logDecryptInput")]
   public bool LogDecryptInput { get; set; }
-
-  public EncryptionServiceConfig()
-  {
-    Enabled = false;
-    Key = string.Empty;
-    IV = string.Empty;
-    LogDecryptInput = false;
-    LoggingEnabled = false;
-  }
 }
