@@ -9,6 +9,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Richard Niemand</Authors>
     <NeutralLanguage>en</NeutralLanguage>
+    <ProjectGuid>DB01C6C9-5AC6-4DCC-9562-A215F8064575</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>

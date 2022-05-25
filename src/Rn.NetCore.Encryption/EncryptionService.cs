@@ -28,7 +28,6 @@ public class EncryptionService : IEncryptionService
     IEncryptionHelper encryptionHelper,
     IEncryptionConfigProvider configProvider)
   {
-    // TODO: [TESTS] (EncryptionService.EncryptionService) Add tests
     _logger = logger;
     _encryptionHelper = encryptionHelper;
     _serviceConfig = configProvider.Provide();
@@ -48,8 +47,6 @@ public class EncryptionService : IEncryptionService
 
   public string Encrypt(string plainText)
   {
-    // TODO: [METRICS] (EncryptionService.Encrypt) Add metrics
-    // TODO: [REPLACE] (EncryptionService.Encrypt) Replace with better lib
     if (!_serviceConfig.Enabled || string.IsNullOrWhiteSpace(plainText))
       return null;
 
@@ -131,7 +128,6 @@ public class EncryptionService : IEncryptionService
 
   public bool CanDecrypt(string encryptedText)
   {
-    // TODO: [METRICS] (EncryptionService.CanDecrypt) Add metrics
     if (!_serviceConfig.Enabled || string.IsNullOrWhiteSpace(encryptedText))
       return false;
 

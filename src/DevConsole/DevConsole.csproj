@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <ProjectGuid>BA830840-885B-454D-9318-D48DA12A300C</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>

@@ -25,7 +25,6 @@ public class EncryptionConfigProvider : IEncryptionConfigProvider
   
   public EncryptionServiceConfig Provide()
   {
-    // TODO: [TESTS] (EncryptionConfigProvider.Provide) Add tests
     const string configKey = EncryptionServiceConfig.ConfigKey;
     var boundConfig = new EncryptionServiceConfig();
     var section = _configuration.GetSection(configKey);
