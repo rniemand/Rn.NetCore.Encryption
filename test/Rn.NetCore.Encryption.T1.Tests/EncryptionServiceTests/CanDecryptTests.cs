@@ -32,8 +32,7 @@ public class CanDecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var canDecrypt = encryptionService.CanDecrypt("bob");
@@ -62,8 +61,7 @@ public class CanDecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var canDecrypt = encryptionService.CanDecrypt(input);
@@ -90,8 +88,7 @@ public class CanDecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     encryptionService.CanDecrypt("bob");
@@ -119,8 +116,7 @@ public class CanDecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var canDecrypt = encryptionService.CanDecrypt("bob");
@@ -147,8 +143,7 @@ public class CanDecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var canDecrypt = encryptionService.CanDecrypt("bob");

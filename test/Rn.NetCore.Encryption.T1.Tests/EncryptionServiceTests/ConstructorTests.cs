@@ -25,8 +25,7 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       encryptionHelper: encryptionHelper,
-      config: config
-    );
+      config: config);
 
     // assert
     encryptionHelper.Received(1).FromBase64String(EncryptionKey);
@@ -46,8 +45,7 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       encryptionHelper: encryptionHelper,
-      config: config
-    );
+      config: config);
 
     // assert
     encryptionHelper.Received(1).FromBase64String(EncryptionIV);
@@ -68,14 +66,12 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       config: config,
-      logger: logger
-    );
+      logger: logger);
 
     // assert
     logger.Received(1).LogError(
       "Encryption input value logging has been enabled, " +
       "this is intended only for troubleshooting purposes and should " +
-      "be disabled once completed!"
-    );
+      "be disabled once completed!");
   }
 }

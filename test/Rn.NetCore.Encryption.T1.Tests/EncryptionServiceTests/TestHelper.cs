@@ -9,12 +9,10 @@ public static class TestHelper
   public static EncryptionService GetService(
     ILoggerAdapter<EncryptionService> logger = null,
     IEncryptionHelper encryptionHelper = null,
-    EncryptionServiceConfig config = null)
-  {
-    return new EncryptionService(
+    EncryptionServiceConfig config = null) =>
+    new(
       logger ?? Substitute.For<ILoggerAdapter<EncryptionService>>(),
       encryptionHelper ?? Substitute.For<IEncryptionHelper>(),
       config ?? new EncryptionServiceConfig()
     );
-  }
 }
