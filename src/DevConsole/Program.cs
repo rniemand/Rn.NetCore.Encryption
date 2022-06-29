@@ -20,9 +20,11 @@ internal class Program
     ConfigureDI();
 
     var encryptionService = _services.GetRequiredService<IEncryptionService>();
-
     var encrypted = encryptionService.Encrypt("Hello World");
     var decrypted = encryptionService.Decrypt(encrypted);
+
+    _logger.LogDebug("Encrypted: {value}", encrypted);
+    _logger.LogDebug("Decrypted: {value}", decrypted);
 
     Console.WriteLine("Fin.");
   }
