@@ -3,13 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>6.0.1.100</Version>
+    <Version>6.0.1.101</Version>
     <Company>Richard Niemand</Company>
     <Description>Encryption helper lib for my projects</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Richard Niemand</Authors>
     <NeutralLanguage>en</NeutralLanguage>
     <ProjectGuid>DB01C6C9-5AC6-4DCC-9562-A215F8064575</ProjectGuid>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

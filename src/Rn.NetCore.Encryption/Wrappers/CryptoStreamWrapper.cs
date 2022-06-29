@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
@@ -56,25 +57,20 @@ public interface ICryptoStream : IStream
   void Clear();
 }
 
+[ExcludeFromCodeCoverage]
 public class CryptoStreamWrapper : ICryptoStream
 {
   // Constructors
   private readonly CryptoStream _cryptoStream;
 
-  public CryptoStreamWrapper(Stream stream, ICryptoTransform transform, CryptoStreamMode mode)
-  {
+  public CryptoStreamWrapper(Stream stream, ICryptoTransform transform, CryptoStreamMode mode) =>
     _cryptoStream = new CryptoStream(stream, transform, mode);
-  }
 
-  public CryptoStreamWrapper(Stream stream, ICryptoTransform transform, CryptoStreamMode mode, bool leaveOpen)
-  {
+  public CryptoStreamWrapper(Stream stream, ICryptoTransform transform, CryptoStreamMode mode, bool leaveOpen) =>
     _cryptoStream = new CryptoStream(stream, transform, mode, leaveOpen);
-  }
 
-  public CryptoStreamWrapper(CryptoStream cryptoStream)
-  {
+  public CryptoStreamWrapper(CryptoStream cryptoStream) =>
     _cryptoStream = cryptoStream;
-  }
 
 
   // Interface properties
