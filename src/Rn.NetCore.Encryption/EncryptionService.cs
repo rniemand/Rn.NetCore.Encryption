@@ -3,7 +3,6 @@ using System.IO;
 using System.Security.Cryptography;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.Configuration;
-using Rn.NetCore.Encryption.Providers;
 
 namespace Rn.NetCore.Encryption;
 
@@ -26,11 +25,11 @@ public class EncryptionService : IEncryptionService
   public EncryptionService(
     ILoggerAdapter<EncryptionService> logger,
     IEncryptionHelper encryptionHelper,
-    IEncryptionConfigProvider configProvider)
+    EncryptionServiceConfig config)
   {
     _logger = logger;
     _encryptionHelper = encryptionHelper;
-    _serviceConfig = configProvider.Provide();
+    _serviceConfig = config;
 
     _keyBytes = _encryptionHelper.FromBase64String(_serviceConfig.Key);
     _ivBytes = _encryptionHelper.FromBase64String(_serviceConfig.IV);

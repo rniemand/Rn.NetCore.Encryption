@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption;
-using Rn.NetCore.Encryption.Providers;
+using Rn.NetCore.Encryption.Extensions;
 
 namespace DevConsole;
 
@@ -20,7 +20,7 @@ internal class Program
     ConfigureDI();
 
     var encryptionService = _services.GetRequiredService<IEncryptionService>();
-    var encrypted = encryptionService.Encrypt("Hello World");
+    var encrypted = encryptionService.Encrypt("Hello World!");
     var decrypted = encryptionService.Decrypt(encrypted);
 
     _logger.LogDebug("Encrypted: {value}", encrypted);
@@ -40,23 +40,14 @@ internal class Program
       .Build();
 
     services
-      // Configuration
-      .AddSingleton<IConfiguration>(config)
-      .AddSingleton<IEncryptionConfigProvider, EncryptionConfigProvider>()
-
-      // Logging
-      .AddSingleton(typeof(ILoggerAdapter<>), typeof(LoggerAdapter<>))
+      .AddRnEncryption(config)
       .AddLogging(loggingBuilder =>
       {
         // configure Logging with NLog
         loggingBuilder.ClearProviders();
         loggingBuilder.SetMinimumLevel(LogLevel.Trace);
         loggingBuilder.AddNLog(config);
-      })
-
-      // Encryption
-      .AddSingleton<IEncryptionService, EncryptionService>()
-      .AddSingleton<IEncryptionHelper, EncryptionHelper>();
+      });
 
     _services = services.BuildServiceProvider();
     _logger = _services.GetService<ILoggerAdapter<Program>>();

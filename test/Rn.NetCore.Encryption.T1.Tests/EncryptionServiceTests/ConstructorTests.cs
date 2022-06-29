@@ -1,4 +1,4 @@
-﻿using NSubstitute;
+using NSubstitute;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.T1.Tests.TestSupport;
@@ -10,21 +10,6 @@ public class ConstructorTests
 {
   private const string EncryptionKey = "rigeU7mR2zA=";
   private const string EncryptionIV = "5ffasfasg4w/stkaYXm/+Mi4Aw=";
-    
-  [Test]
-  public void EncryptionService_GivenConstructed_ShouldCallGetEncryptionServiceConfig()
-  {
-    // arrange
-    var configProvider = TestHelper.GetConfigProvider();
-      
-    // act
-    TestHelper.GetService(
-      configProvider: configProvider
-    );
-
-    // assert
-    configProvider.Received(1).Provide();
-  }
 
   [Test]
   public void EncryptionService_GivenEnabled_ShouldSetKeyBytes()
