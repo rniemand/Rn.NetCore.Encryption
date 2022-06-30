@@ -7,38 +7,26 @@ namespace Rn.NetCore.Encryption.T1.Tests.Configuration;
 public class EncryptionServiceConfigTests
 {
   [Test]
-  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultEnabled()
-  {
-    Assert.IsFalse(new EncryptionServiceConfig().Enabled);
-  }
+  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultEnabled() =>
+    Assert.IsFalse(new RnEncryptionConfig().Enabled);
 
   [Test]
-  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultKey()
-  {
-    Assert.AreEqual(string.Empty, new EncryptionServiceConfig().Key);
-  }
+  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultKey() =>
+    Assert.AreEqual(string.Empty, new RnEncryptionConfig().Key);
 
   [Test]
-  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultIV()
-  {
-    Assert.AreEqual(string.Empty, new EncryptionServiceConfig().IV);
-  }
+  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultIV() =>
+    Assert.AreEqual(string.Empty, new RnEncryptionConfig().IV);
 
   [Test]
-  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLogDecryptInput()
-  {
-    Assert.IsFalse(new EncryptionServiceConfig().LogDecryptInput);
-  }
+  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLogDecryptInput() =>
+    Assert.IsFalse(new RnEncryptionConfig().LogDecryptInput);
 
   [Test]
-  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLoggingEnabled()
-  {
-    Assert.IsFalse(new EncryptionServiceConfig().LoggingEnabled);
-  }
+  public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLoggingEnabled() =>
+    Assert.IsFalse(new RnEncryptionConfig().LoggingEnabled);
 
   [Test]
-  public void EncryptionServiceConfig_GivenConfigKey_ShouldReturnExpectedValue()
-  {
-    Assert.AreEqual("Rn.Encryption", EncryptionServiceConfig.ConfigKey);
-  }
+  public void EncryptionServiceConfig_GivenConfigKey_ShouldReturnExpectedValue() =>
+    Assert.AreEqual("Rn.Encryption", RnEncryptionConfig.ConfigKey);
 }

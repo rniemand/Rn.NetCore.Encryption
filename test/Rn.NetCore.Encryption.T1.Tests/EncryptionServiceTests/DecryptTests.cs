@@ -7,7 +7,6 @@ using NUnit.Framework;
 using Rn.NetCore.Common.Extensions;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.T1.Tests.TestSupport;
-using Rn.NetCore.Encryption.Wrappers;
 
 namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests;
 
@@ -26,10 +25,7 @@ public class DecryptTests
   {
     // arrange
     var config = new EncryptionServiceConfigBuilder().BuildWithDefaults(false);
-
-    var encryptionService = TestHelper.GetService(
-      config: config
-    );
+    var encryptionService = TestHelper.GetService(config: config);
 
     // act
     var encrypted = encryptionService.Decrypt("input");
@@ -43,10 +39,7 @@ public class DecryptTests
   {
     // arrange
     var config = new EncryptionServiceConfigBuilder().BuildWithDefaults();
-
-    var encryptionService = TestHelper.GetService(
-      config: config
-    );
+    var encryptionService = TestHelper.GetService(config: config);
 
     // act
     var encrypted = encryptionService.Decrypt("");
@@ -71,7 +64,7 @@ public class DecryptTests
     encryptionHelper
       .CreateCryptoStream(Arg.Any<Stream>(), cryptoTransform, CryptoStreamMode.Read)
       .Returns(cryptoStream);
-      
+
     cryptoStream
       .When(x => x.Read(Arg.Any<byte[]>(), 0, InputBytes.Length))
       .Do(info =>
@@ -94,8 +87,7 @@ public class DecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var decrypted = encryptionService.Decrypt(InputValue);
@@ -115,7 +107,7 @@ public class DecryptTests
     encryptionHelper.FromBase64String(EncryptionKey).Returns(KeyBytes);
     encryptionHelper.FromBase64String(EncryptionIV).Returns(IVBytes);
     encryptionHelper.FromBase64String(InputValue).Throws(ex);
-      
+
     var config = new EncryptionServiceConfigBuilder()
       .WithDefaults()
       .WithKey(EncryptionKey)
@@ -126,8 +118,7 @@ public class DecryptTests
     var encryptionService = TestHelper.GetService(
       config: config,
       encryptionHelper: encryptionHelper,
-      logger: logger
-    );
+      logger: logger);
 
     // act
     encryptionService.Decrypt(InputValue);
@@ -137,8 +128,7 @@ public class DecryptTests
       ex.GetType().Name,
       Arg.Any<string>(),
       ex.Message,
-      ex.HumanStackTrace()
-    );
+      ex.HumanStackTrace());
   }
 
   [Test]
@@ -164,8 +154,7 @@ public class DecryptTests
     var encryptionService = TestHelper.GetService(
       config: config,
       encryptionHelper: encryptionHelper,
-      logger: logger
-    );
+      logger: logger);
 
     // act
     encryptionService.Decrypt(InputValue);
@@ -174,8 +163,7 @@ public class DecryptTests
     logger.Received(1).LogError(ex,
       "Unable to decrypt: {i}. {s}",
       InputValue,
-      ex.HumanStackTrace()
-    );
+      ex.HumanStackTrace());
   }
 
   [Test]
@@ -201,8 +189,7 @@ public class DecryptTests
     var encryptionService = TestHelper.GetService(
       config: config,
       encryptionHelper: encryptionHelper,
-      logger: logger
-    );
+      logger: logger);
 
     // act
     encryptionService.Decrypt(InputValue);
@@ -212,8 +199,7 @@ public class DecryptTests
       Arg.Any<Exception>(),
       Arg.Any<string>(),
       Arg.Any<string>(),
-      Arg.Any<string>()
-    );
+      Arg.Any<string>());
   }
 
   [Test]
@@ -237,8 +223,7 @@ public class DecryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var output = encryptionService.Decrypt(InputValue);

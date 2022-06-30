@@ -4,14 +4,8 @@ namespace Rn.NetCore.Encryption.T1.Tests.TestSupport;
 
 public class EncryptionServiceConfigBuilder
 {
-  private readonly EncryptionServiceConfig _config;
-
-  public EncryptionServiceConfigBuilder()
-  {
-    _config = new EncryptionServiceConfig();
-  }
-
-
+  private readonly RnEncryptionConfig _config = new();
+  
   public EncryptionServiceConfigBuilder WithDefaults()
   {
     _config.Enabled = true;
@@ -19,7 +13,6 @@ public class EncryptionServiceConfigBuilder
     _config.IV = "5ffasfasg4w/stkaYXm/+Mi4Aw=";
     _config.LogDecryptInput = false;
     _config.LoggingEnabled = false;
-
     return this;
   }
 
@@ -56,12 +49,11 @@ public class EncryptionServiceConfigBuilder
     return this;
   }
 
+  public RnEncryptionConfig Build() => _config;
 
-  public EncryptionServiceConfig Build() => _config;
-
-  public EncryptionServiceConfig BuildWithDefaults()
+  public RnEncryptionConfig BuildWithDefaults()
     => WithDefaults().Build();
 
-  public EncryptionServiceConfig BuildWithDefaults(bool enabled)
+  public RnEncryptionConfig BuildWithDefaults(bool enabled)
     => WithDefaults(enabled).Build();
 }

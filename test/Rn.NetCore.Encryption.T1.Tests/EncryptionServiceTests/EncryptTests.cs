@@ -6,7 +6,6 @@ using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.T1.Tests.TestSupport;
-using Rn.NetCore.Encryption.Wrappers;
 
 namespace Rn.NetCore.Encryption.T1.Tests.EncryptionServiceTests;
 
@@ -26,10 +25,7 @@ public class EncryptTests
   {
     // arrange
     var config = new EncryptionServiceConfigBuilder().BuildWithDefaults(false);
-
-    var encryptionService = TestHelper.GetService(
-      config: config
-    );
+    var encryptionService = TestHelper.GetService(config: config);
 
     // act
     var encrypted = encryptionService.Encrypt("input");
@@ -43,10 +39,7 @@ public class EncryptTests
   {
     // arrange
     var config = new EncryptionServiceConfigBuilder().BuildWithDefaults();
-
-    var encryptionService = TestHelper.GetService(
-      config: config
-    );
+    var encryptionService = TestHelper.GetService(config: config);
 
     // act
     var encrypted = encryptionService.Encrypt("");
@@ -90,8 +83,7 @@ public class EncryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var encrypted = encryptionService.Encrypt(InputValue);
@@ -123,8 +115,7 @@ public class EncryptTests
     var encryptionService = TestHelper.GetService(
       config: config,
       encryptionHelper: encryptionHelper,
-      logger: logger
-    );
+      logger: logger);
 
     // act
     encryptionService.Encrypt(InputValue);
@@ -135,8 +126,7 @@ public class EncryptTests
       ex.GetType().Name,
       Arg.Any<string>(),
       ex.Message,
-      ex.HumanStackTrace()
-    );
+      ex.HumanStackTrace());
   }
 
   [Test]
@@ -159,8 +149,7 @@ public class EncryptTests
     var encryptionService = TestHelper.GetService(
       config: config,
       encryptionHelper: encryptionHelper,
-      logger: logger
-    );
+      logger: logger);
 
     // act
     encryptionService.Encrypt(InputValue);
@@ -171,8 +160,7 @@ public class EncryptTests
       ex.GetType().Name,
       Arg.Any<string>(),
       ex.Message,
-      ex.HumanStackTrace()
-    );
+      ex.HumanStackTrace());
   }
 
   [Test]
@@ -193,8 +181,7 @@ public class EncryptTests
 
     var encryptionService = TestHelper.GetService(
       config: config,
-      encryptionHelper: encryptionHelper
-    );
+      encryptionHelper: encryptionHelper);
 
     // act
     var output = encryptionService.Encrypt(InputValue);

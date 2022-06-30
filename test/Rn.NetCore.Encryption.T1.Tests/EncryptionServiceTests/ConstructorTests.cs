@@ -1,4 +1,4 @@
-﻿using NSubstitute;
+using NSubstitute;
 using NUnit.Framework;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.T1.Tests.TestSupport;
@@ -10,21 +10,6 @@ public class ConstructorTests
 {
   private const string EncryptionKey = "rigeU7mR2zA=";
   private const string EncryptionIV = "5ffasfasg4w/stkaYXm/+Mi4Aw=";
-    
-  [Test]
-  public void EncryptionService_GivenConstructed_ShouldCallGetEncryptionServiceConfig()
-  {
-    // arrange
-    var configProvider = TestHelper.GetConfigProvider();
-      
-    // act
-    TestHelper.GetService(
-      configProvider: configProvider
-    );
-
-    // assert
-    configProvider.Received(1).Provide();
-  }
 
   [Test]
   public void EncryptionService_GivenEnabled_ShouldSetKeyBytes()
@@ -40,8 +25,7 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       encryptionHelper: encryptionHelper,
-      config: config
-    );
+      config: config);
 
     // assert
     encryptionHelper.Received(1).FromBase64String(EncryptionKey);
@@ -61,8 +45,7 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       encryptionHelper: encryptionHelper,
-      config: config
-    );
+      config: config);
 
     // assert
     encryptionHelper.Received(1).FromBase64String(EncryptionIV);
@@ -83,14 +66,12 @@ public class ConstructorTests
     // act
     TestHelper.GetService(
       config: config,
-      logger: logger
-    );
+      logger: logger);
 
     // assert
     logger.Received(1).LogError(
       "Encryption input value logging has been enabled, " +
       "this is intended only for troubleshooting purposes and should " +
-      "be disabled once completed!"
-    );
+      "be disabled once completed!");
   }
 }
