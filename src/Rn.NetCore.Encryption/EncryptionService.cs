@@ -8,8 +8,8 @@ namespace Rn.NetCore.Encryption;
 
 public interface IEncryptionService
 {
-  string Encrypt(string plainText);
-  string Decrypt(string encryptedText);
+  string? Encrypt(string plainText);
+  string? Decrypt(string encryptedText);
   bool CanDecrypt(string encryptedText);
 }
 
@@ -44,7 +44,7 @@ public class EncryptionService : IEncryptionService
     }
   }
 
-  public string Encrypt(string plainText)
+  public string? Encrypt(string plainText)
   {
     if (!_config.Enabled || string.IsNullOrWhiteSpace(plainText))
       return null;
@@ -79,9 +79,8 @@ public class EncryptionService : IEncryptionService
     }
   }
 
-  public string Decrypt(string encryptedText)
+  public string? Decrypt(string encryptedText)
   {
-    // TODO: [METRICS] (EncryptionService.Decrypt) Add metrics
     // TODO: [REPLACE] (EncryptionService.Decrypt) Replace with better lib
     if (!_config.Enabled || string.IsNullOrWhiteSpace(encryptedText))
       return null;
