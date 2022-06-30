@@ -1,55 +1,20 @@
 using System;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using NLog.Extensions.Logging;
-using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption;
-using Rn.NetCore.Encryption.Extensions;
 
 namespace DevConsole;
 
 internal class Program
 {
-  private static IServiceProvider _services;
-  private static ILoggerAdapter<Program> _logger;
-
-  static void Main(string[] args)
+  private static void Main()
   {
-    ConfigureDI();
+    var encService = DIContainer.Services.GetRequiredService<IEncryptionService>();
 
-    var encryptionService = _services.GetRequiredService<IEncryptionService>();
-    var encrypted = encryptionService.Encrypt("Hello World!");
-    var decrypted = encryptionService.Decrypt(encrypted);
+    var encrypted = encService.Encrypt("Hello World!");
+    var decrypted = encService.Decrypt(encrypted);
 
-    _logger.LogDebug("Encrypted: {value}", encrypted);
-    _logger.LogDebug("Decrypted: {value}", decrypted);
-
+    Console.WriteLine(encrypted);
+    Console.WriteLine(decrypted);
     Console.WriteLine("Fin.");
-  }
-
-  // DI related methods
-  private static void ConfigureDI()
-  {
-    var services = new ServiceCollection();
-
-    var config = new ConfigurationBuilder()
-      .SetBasePath(Directory.GetCurrentDirectory())
-      .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-      .Build();
-
-    services
-      .AddRnEncryption(config)
-      .AddLogging(loggingBuilder =>
-      {
-        // configure Logging with NLog
-        loggingBuilder.ClearProviders();
-        loggingBuilder.SetMinimumLevel(LogLevel.Trace);
-        loggingBuilder.AddNLog(config);
-      });
-
-    _services = services.BuildServiceProvider();
-    _logger = _services.GetService<ILoggerAdapter<Program>>();
   }
 }
