@@ -17,7 +17,7 @@ public class EncryptionService : IEncryptionService
 {
   private readonly ILoggerAdapter<EncryptionService> _logger;
   private readonly IEncryptionHelper _encryptionHelper;
-  private readonly EncryptionServiceConfig _serviceConfig;
+  private readonly RnEncryptionConfig _config;
 
   private readonly byte[] _keyBytes;
   private readonly byte[] _ivBytes;
@@ -25,17 +25,17 @@ public class EncryptionService : IEncryptionService
   public EncryptionService(
     ILoggerAdapter<EncryptionService> logger,
     IEncryptionHelper encryptionHelper,
-    EncryptionServiceConfig config)
+    RnEncryptionConfig config)
   {
     _logger = logger;
     _encryptionHelper = encryptionHelper;
-    _serviceConfig = config;
+    _config = config;
 
-    _keyBytes = _encryptionHelper.FromBase64String(_serviceConfig.Key);
-    _ivBytes = _encryptionHelper.FromBase64String(_serviceConfig.IV);
+    _keyBytes = _encryptionHelper.FromBase64String(_config.Key);
+    _ivBytes = _encryptionHelper.FromBase64String(_config.IV);
 
     // Check if we need to warn about potential bad config values
-    if (_serviceConfig.LoggingEnabled && _serviceConfig.LogDecryptInput)
+    if (_config.LoggingEnabled && _config.LogDecryptInput)
     {
       _logger.LogError(
         "Encryption input value logging has been enabled, " +
@@ -46,7 +46,7 @@ public class EncryptionService : IEncryptionService
 
   public string Encrypt(string plainText)
   {
-    if (!_serviceConfig.Enabled || string.IsNullOrWhiteSpace(plainText))
+    if (!_config.Enabled || string.IsNullOrWhiteSpace(plainText))
       return null;
 
     try
@@ -72,7 +72,7 @@ public class EncryptionService : IEncryptionService
     }
     catch (Exception ex)
     {
-      if (_serviceConfig.LoggingEnabled)
+      if (_config.LoggingEnabled)
         _logger.LogUnexpectedException(ex);
 
       return null;
@@ -83,7 +83,7 @@ public class EncryptionService : IEncryptionService
   {
     // TODO: [METRICS] (EncryptionService.Decrypt) Add metrics
     // TODO: [REPLACE] (EncryptionService.Decrypt) Replace with better lib
-    if (!_serviceConfig.Enabled || string.IsNullOrWhiteSpace(encryptedText))
+    if (!_config.Enabled || string.IsNullOrWhiteSpace(encryptedText))
       return null;
 
     try
@@ -106,10 +106,10 @@ public class EncryptionService : IEncryptionService
     }
     catch (Exception ex)
     {
-      if (!_serviceConfig.LoggingEnabled)
+      if (!_config.LoggingEnabled)
         return null;
 
-      if (_serviceConfig.LogDecryptInput)
+      if (_config.LogDecryptInput)
       {
         _logger.LogError(ex,
           "Unable to decrypt: {i}. {s}",
@@ -127,7 +127,7 @@ public class EncryptionService : IEncryptionService
 
   public bool CanDecrypt(string encryptedText)
   {
-    if (!_serviceConfig.Enabled || string.IsNullOrWhiteSpace(encryptedText))
+    if (!_config.Enabled || string.IsNullOrWhiteSpace(encryptedText))
       return false;
 
     return Decrypt(encryptedText) != null;

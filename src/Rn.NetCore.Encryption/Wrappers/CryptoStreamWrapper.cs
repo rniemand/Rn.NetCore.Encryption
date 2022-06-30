@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Rn.NetCore.Encryption.Wrappers;
+namespace Rn.NetCore.Encryption;
 
 public interface IStream : IDisposable, IAsyncDisposable
 {

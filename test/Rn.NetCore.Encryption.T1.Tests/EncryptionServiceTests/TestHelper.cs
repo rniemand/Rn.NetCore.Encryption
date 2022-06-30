@@ -1,4 +1,4 @@
-using NSubstitute;
+﻿using NSubstitute;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.Configuration;
 
@@ -9,10 +9,10 @@ public static class TestHelper
   public static EncryptionService GetService(
     ILoggerAdapter<EncryptionService> logger = null,
     IEncryptionHelper encryptionHelper = null,
-    EncryptionServiceConfig config = null) =>
+    RnEncryptionConfig config = null) =>
     new(
       logger ?? Substitute.For<ILoggerAdapter<EncryptionService>>(),
       encryptionHelper ?? Substitute.For<IEncryptionHelper>(),
-      config ?? new EncryptionServiceConfig()
+      config ?? new RnEncryptionConfig()
     );
 }

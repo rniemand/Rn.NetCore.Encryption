@@ -4,7 +4,7 @@ namespace Rn.NetCore.Encryption.T1.Tests.TestSupport;
 
 public class EncryptionServiceConfigBuilder
 {
-  private readonly EncryptionServiceConfig _config = new();
+  private readonly RnEncryptionConfig _config = new();
   
   public EncryptionServiceConfigBuilder WithDefaults()
   {
@@ -49,11 +49,11 @@ public class EncryptionServiceConfigBuilder
     return this;
   }
 
-  public EncryptionServiceConfig Build() => _config;
+  public RnEncryptionConfig Build() => _config;
 
-  public EncryptionServiceConfig BuildWithDefaults()
+  public RnEncryptionConfig BuildWithDefaults()
     => WithDefaults().Build();
 
-  public EncryptionServiceConfig BuildWithDefaults(bool enabled)
+  public RnEncryptionConfig BuildWithDefaults(bool enabled)
     => WithDefaults(enabled).Build();
 }

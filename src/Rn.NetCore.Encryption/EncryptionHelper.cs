@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Rn.NetCore.Encryption.Wrappers;
 
 namespace Rn.NetCore.Encryption;
 
@@ -19,6 +19,7 @@ public interface IEncryptionHelper
   byte[] GetRandomBytes(int length);
 }
 
+[ExcludeFromCodeCoverage]
 public class EncryptionHelper : IEncryptionHelper
 {
   private readonly Random _random = new Random(DateTime.Now.Millisecond);

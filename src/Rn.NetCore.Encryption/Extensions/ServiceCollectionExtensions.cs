@@ -1,11 +1,11 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rn.NetCore.Common.Exceptions;
 using Rn.NetCore.Common.Logging;
 using Rn.NetCore.Encryption.Configuration;
 
-namespace Rn.NetCore.Encryption.Extensions;
+namespace Rn.NetCore.Encryption;
 
 public static class ServiceCollectionExtensions
 {
@@ -20,10 +20,10 @@ public static class ServiceCollectionExtensions
       .AddSingleton<IEncryptionHelper, EncryptionHelper>();
   }
 
-  private static EncryptionServiceConfig BindConfig(IConfiguration configuration)
+  private static RnEncryptionConfig BindConfig(IConfiguration configuration)
   {
-    const string configKey = EncryptionServiceConfig.ConfigKey;
-    var boundConfig = new EncryptionServiceConfig();
+    const string configKey = RnEncryptionConfig.ConfigKey;
+    var boundConfig = new RnEncryptionConfig();
     var section = configuration.GetSection(configKey);
 
     if (!section.Exists())

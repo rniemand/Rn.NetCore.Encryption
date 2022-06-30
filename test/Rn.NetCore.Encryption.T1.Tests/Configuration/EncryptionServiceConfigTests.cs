@@ -8,25 +8,25 @@ public class EncryptionServiceConfigTests
 {
   [Test]
   public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultEnabled() =>
-    Assert.IsFalse(new EncryptionServiceConfig().Enabled);
+    Assert.IsFalse(new RnEncryptionConfig().Enabled);
 
   [Test]
   public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultKey() =>
-    Assert.AreEqual(string.Empty, new EncryptionServiceConfig().Key);
+    Assert.AreEqual(string.Empty, new RnEncryptionConfig().Key);
 
   [Test]
   public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultIV() =>
-    Assert.AreEqual(string.Empty, new EncryptionServiceConfig().IV);
+    Assert.AreEqual(string.Empty, new RnEncryptionConfig().IV);
 
   [Test]
   public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLogDecryptInput() =>
-    Assert.IsFalse(new EncryptionServiceConfig().LogDecryptInput);
+    Assert.IsFalse(new RnEncryptionConfig().LogDecryptInput);
 
   [Test]
   public void EncryptionServiceConfig_GivenConstructed_ShouldDefaultLoggingEnabled() =>
-    Assert.IsFalse(new EncryptionServiceConfig().LoggingEnabled);
+    Assert.IsFalse(new RnEncryptionConfig().LoggingEnabled);
 
   [Test]
   public void EncryptionServiceConfig_GivenConfigKey_ShouldReturnExpectedValue() =>
-    Assert.AreEqual("Rn.Encryption", EncryptionServiceConfig.ConfigKey);
+    Assert.AreEqual("Rn.Encryption", RnEncryptionConfig.ConfigKey);
 }

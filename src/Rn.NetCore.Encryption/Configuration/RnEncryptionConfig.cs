@@ -2,8 +2,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Rn.NetCore.Encryption.Configuration;
 
-// DOCS: docs\configuration\EncryptionServiceConfig.md
-public class EncryptionServiceConfig
+public class RnEncryptionConfig
 {
   public const string ConfigKey = "Rn.Encryption";
 

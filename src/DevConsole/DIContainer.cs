@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using Rn.NetCore.Encryption.Extensions;
+using Rn.NetCore.Encryption;
 
 namespace DevConsole;
 
